@@ -198,19 +198,20 @@ function onEditModal(e) {
     editInput.value = taskElement.childNodes[1].childNodes[3].textContent;
   }
 }
-function onEditTask() {
-  function storageEdit() {
-    let items = getFromStorage();
-    items.forEach((item) => {
-      if (item.id == currentTaskId) {
-        if (editInput.value !== "") {
-          item.title = editInput.value;
-        }
-      }
-    });
-    localStorage.setItem("todos", JSON.stringify(items));
-  }
 
+function storageEdit() {
+  let items = getFromStorage();
+  items.forEach((item) => {
+    if (item.id == currentTaskId) {
+      if (editInput.value !== "") {
+        item.title = editInput.value;
+      }
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(items));
+}
+
+function onEditTask() {
   if (currentTaskId !== null) {
     const taskElement = document
       .querySelector(`i[data-todo-id="${currentTaskId}"]`)
